@@ -19,7 +19,7 @@ A production-grade web app I designed and built end-to-end: frontend, backend, d
 ### What I owned
 
 - **Frontend** — a real-time dashboard in **Next.js 15, React, TypeScript, and Tailwind**. Live data views and controls, kept current with interval polling against the backend.
-- **Backend** — a **Python / FastAPI** service exposing **130+ REST endpoints**, driving a fleet of concurrent **async** workers on a single asyncio event loop. Fan-out to external APIs goes through a shared client with per-host rate limits, so one slow upstream never freezes the tick.
+- **Backend** — a **Python / FastAPI** service exposing **130+ REST endpoints** (plus a WebSocket broadcast endpoint), driving a fleet of concurrent **async** workers on a single asyncio event loop. Fan-out to external APIs goes through a shared client with per-host rate limits, so one slow upstream never freezes the tick.
 - **Data layer** — **SQLite in WAL mode** for concurrent reads without a network round-trip on the write path. One machine, no distributed-DB latency tax.
 - **On-chain execution** — Solana trades routed through **Jupiter and PumpPortal with multi-path fallback**, dual submission for landing reliability, and post-submit verification so I act on confirmed fills, not optimistic ones.
 - **AI layer** — multi-model **LLM integration (Claude, OpenRouter)** for classification and post-mortems. The LLM is **advisory only**: every money-moving decision is deterministic, rule-based, and auditable. That boundary is deliberate — I don't let a model move capital.
